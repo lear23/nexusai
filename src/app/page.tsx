@@ -68,7 +68,7 @@ export default function ChatPage() {
       console.error(error);
       const errorMessage: Message = {
         role: "ai",
-        text: "Lo siento, hubo un error al procesar tu mensaje.",
+        text: "Sorry, there was an error processing your message.",
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
@@ -81,10 +81,10 @@ export default function ChatPage() {
       <div className="stars-container absolute inset-0 overflow-hidden"></div>
 
       <div className="relative z-10 flex flex-col items-center p-4 md:p-6 max-w-4xl mx-auto min-h-screen">
-        {/* Header con selector de provider */}
+        {/* Header with provider selector */}
         <div className="w-full bg-slate-800 bg-opacity-90 rounded-xl shadow-2xl p-4 md:p-6 mt-8 mb-4 backdrop-blur-sm">
           <h1 className="text-2xl font-bold mb-4 text-white">
-            Chat con {provider === "groq" ? "Groq" : "Ollama"}
+            Chat with {provider === "groq" ? "Groq" : "Ollama"}
           </h1>
 
           <div className="flex gap-2 mb-2">
@@ -111,11 +111,11 @@ export default function ChatPage() {
           </div>
         </div>
 
-        {/* Área de mensajes principal */}
+        {/* Main message area */}
         <div className="flex-1 w-full overflow-y-auto mb-24">
           {messages.length === 0 ? (
             <div className="h-full flex items-center justify-center text-gray-400">
-              <p>Envía un mensaje para comenzar la conversación...</p>
+              <p>Send a message to start the conversation...</p>
             </div>
           ) : (
             messages.map((msg, i) => (
@@ -148,14 +148,14 @@ export default function ChatPage() {
                     <div className="h-2 w-2 bg-gray-500 rounded-full"></div>
                     <div className="h-2 w-2 bg-gray-500 rounded-full"></div>
                   </div>
-                  <span className="ml-2">Pensando...</span>
+                  <span className="ml-2">Thinking...</span>
                 </div>
               </div>
             </div>
           )}
         </div>
 
-        {/* Input fijo en la parte inferior */}
+        {/* Fixed input at the bottom */}
         <div className="fixed bottom-0 left-0 right-0 bg-slate-800 bg-opacity-90 backdrop-blur-sm py-4 px-4 md:px-0">
           <div className="max-w-4xl mx-auto">
             <div className="flex w-full">
@@ -169,7 +169,7 @@ export default function ChatPage() {
                   }
                 }}
                 className="flex-grow border border-slate-600 bg-slate-700 text-white p-3 rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Escribe tu mensaje..."
+                placeholder="Type your message..."
                 style={{ minHeight: "60px", maxHeight: "120px", resize: "none" }}
               />
               <button
@@ -177,7 +177,7 @@ export default function ChatPage() {
                 disabled={loading}
                 className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-r transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Enviar
+                Send
               </button>
             </div>
           </div>

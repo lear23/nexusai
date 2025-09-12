@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # Your Next.js application
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    # This loads environment variables from the .env.local file
+    # where your GROQ_API_KEY should be stored.
+    env_file:
+      - .env.local
+    # Environment variables for your app, if needed
+    environment:
+      # This tells your app where to find the Ollama API
+      - OLLAMA_BASE_URL=http://ollama:11434
+    # This makes your app wait for Ollama to be ready (optional but recommended)
+    depends_on:
+      - ollama
+
+  # Ollama service
+  ollama:
+    image: alpine/llama3.2
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    # To keep the container running
+    tty: true
+
+volumes:
+  # This named volume will persist Ollama models
+  ollama_data:

@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: process.env.OLLAMA_MODEL || "llama3.1:8b",
+        model: process.env.OLLAMA_MODEL || "llama3.2",
         prompt,
         stream: false
       })
