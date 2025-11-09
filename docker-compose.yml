@@ -15,7 +15,7 @@ services:
     # Environment variables for your app, if needed
     environment:
       # This tells your app where to find the Ollama API
-      - OLLAMA_BASE_URL=http://ollama:11434
+      - OLLAMA_URL=http://ollama:11434
     # This makes your app wait for Ollama to be ready (optional but recommended)
     depends_on:
       - ollama
